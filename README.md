@@ -10,8 +10,12 @@ chmod +x run.sh
 ```
 
 ## Włączanie
+Uruchomienie usługi inventory na porcie 10001:
 ```
 node inventory/inventory.js
+```
+Uruchomienie usługi bramy API na porcie 10000:
+```
 node api_gateway/api_gateway.js
 ```
 
