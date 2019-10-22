@@ -5,8 +5,8 @@ Wersja demo.
 
 ## Instalacja
 ```
-chmod +x run.sh
-./run.sh
+chmod +x install.sh
+./install.sh
 ```
 
 ## Włączanie
