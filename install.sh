@@ -4,4 +4,6 @@ cd ..
 cd api_gateway
 npm install
 cd ..
-
+cd shipping
+npm install
+cd ..
