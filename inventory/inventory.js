@@ -1,9 +1,13 @@
-const express = require('express');
+'use strict';
 
 const PORT = 10001;
 const HOST = '0.0.0.0';
 
+const express = require('express');
 const app = express();
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
+
 
 const books = [
   {id: 1, author: "Fyodor Dostoyevsky", title: "Crime and Punishment", amount: 4},
@@ -12,9 +16,45 @@ const books = [
 ];
 
 app.get('/books', (req, res) => {
-  console.log('Returning books list');
-  res.send(books);
+  
+  const token = retrieveTokenFromRequest(req);
+
+  var publicKEY  = fs.readFileSync('./public.key', 'utf8');
+
+  var verifyOptions = {
+    issuer:  "iam",
+    subject:  "orders",
+    audience:  "customers",
+    expiresIn:  "12h",
+    algorithm:  ["RS256"]
+   };
+   
+  var legit = jwt.verify(token, publicKEY, verifyOptions, function(err, decoded) {
+    if (err) {
+      console.log("ERROR:");
+      console.log(err);
+      res.sendStatus(403);
+    } else {
+      console.log("DECODED: " + decoded);
+      res.send(books);
+    }
+  });
+  console.log("\nJWT verification result: " + JSON.stringify(legit));
 });
 
 app.listen(PORT, HOST);
 console.log(`Inventory service running on http://${HOST}:${PORT}`);
+
+function retrieveTokenFromRequest(req) {
+  const authorization = req.header('Authorization');
+  console.log("req.header(auth): " + authorization);
+  if (authorization === null || typeof authorization === 'undefined') {
+    return null;
+  }
+  const token = authorization.substr('JWT '.length);
+  console.log("token: " + token);
+  if (token === null | typeof token === 'undefined') {
+    return null;
+  }
+  return token;
+}
