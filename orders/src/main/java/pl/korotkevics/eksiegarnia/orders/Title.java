@@ -7,4 +7,11 @@ class Title {
   Title(String value) {
     this.value = value;
   }
+
+  @Override
+  public String toString() {
+    return "Title{" +
+        "value='" + value + '\'' +
+        '}';
+  }
 }

@@ -11,4 +11,13 @@ class Author {
     this.middleName = middleName;
     this.lastName = lastName;
   }
+
+  @Override
+  public String toString() {
+    return "Author{" +
+        "firstName='" + firstName + '\'' +
+        ", middleName='" + middleName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        '}';
+  }
 }

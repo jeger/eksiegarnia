@@ -6,14 +6,17 @@ class FacadeImpl implements Facade {
 
   private final Service service;
 
-  FacadeImpl(Service service) {
+  private final ParsingUtility parsingUtility;
+
+  FacadeImpl(Service service, ParsingUtility parsingUtility) {
     this.service = service;
+    this.parsingUtility = parsingUtility;
   }
 
   @Override
-  public Result create(Request req) {
+  public Result<Order> create(Request req) {
     // TODO: handle OperationStatus.ERROR
-
-    return new Result(OperationStatus.OK, service.create(req.body()));
+    return new Result<>(OperationStatus.OK,
+        service.create(parsingUtility.parse(req.body(), Order.class)));
   }
 }

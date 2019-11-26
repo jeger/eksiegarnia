@@ -7,4 +7,11 @@ class Distributor {
   Distributor(String name) {
     this.name = name;
   }
+
+  @Override
+  public String toString() {
+    return "Distributor{" +
+        "name='" + name + '\'' +
+        '}';
+  }
 }

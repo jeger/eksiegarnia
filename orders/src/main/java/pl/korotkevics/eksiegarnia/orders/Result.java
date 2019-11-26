@@ -1,12 +1,20 @@
 package pl.korotkevics.eksiegarnia.orders;
 
-class Result {
+class Result<T> {
 
   private final OperationStatus operationStatus;
-  private final Object contents;
+  private final T contents;
 
-  Result(OperationStatus operationStatus, Object contents) {
+  Result(OperationStatus operationStatus, T contents) {
     this.operationStatus = operationStatus;
     this.contents = contents;
+  }
+
+  @Override
+  public String toString() {
+    return "Result{" +
+        "operationStatus=" + operationStatus +
+        ", contents=" + contents +
+        '}';
   }
 }
