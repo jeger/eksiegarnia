@@ -4,15 +4,16 @@ import spark.Request;
 
 class FacadeImpl implements Facade {
 
-    private final Service service;
+  private final Service service;
 
-    FacadeImpl(Service service) {
-        this.service = service;
-    }
+  FacadeImpl(Service service) {
+    this.service = service;
+  }
 
-    @Override
-    public Result create(Request req) {
+  @Override
+  public Result create(Request req) {
+    // TODO: handle OperationStatus.ERROR
 
-        return null;
-    }
+    return new Result(OperationStatus.OK, service.create(req.body()));
+  }
 }

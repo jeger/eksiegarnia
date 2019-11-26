@@ -5,13 +5,13 @@ import static spark.Spark.post;
 
 class Server {
 
-    private Facade facade;
+  private Facade facade;
 
-    Server(Facade facade) {
-        this.facade = facade;
-    }
+  Server(Facade facade) {
+    this.facade = facade;
+  }
 
-    void start() {
-        path("/orders", () -> post("", (req, res) -> facade.create(req)));
-    }
+  void start() {
+    path("/orders", () -> post("", (req, res) -> facade.create(req)));
+  }
 }
