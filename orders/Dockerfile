@@ -1,4 +1,6 @@
 FROM openjdk:11
-COPY . /usr/src/orders
-WORKDIR /usr/src/orders
-RUN javac
+VOLUME /tmp
+
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
