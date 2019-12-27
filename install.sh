@@ -7,3 +7,6 @@ cd ..
 cd shipping
 npm install
 cd ..
+cd auth
+npm install
+cd ..

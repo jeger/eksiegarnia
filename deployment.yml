@@ -32,6 +32,6 @@ spec:
     spec:
       containers:
         - name: inventory-service-kontener
-          image: sadkowski/inventory-service
+          image: tai_api_gateway
           ports:
             - containerPort: 80

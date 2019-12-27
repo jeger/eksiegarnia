@@ -1,0 +1,18 @@
+version: '3'
+services:
+  api_gateway:
+    build: api_gateway/
+    ports:
+      - "10000:10000"
+  auth:
+    build: auth/
+    ports:
+      - "10010:10010"
+  inventory:
+    build: inventory/
+    ports:
+      - "10001:10001"
+  shipping:
+    build: shipping/
+    ports:
+      - "10002:10002"

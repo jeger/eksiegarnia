@@ -6,12 +6,12 @@ const PORT = 10000;
 const HOST = '0.0.0.0';
 const app = express();
 
-const inventoryService = 'http://localhost:10001';
-const authService = 'http://localhost:10010';
-
+const inventoryService = 'http://inventory:10001';
+const authService = 'http://auth:10010';
+console.log("authService: " + authService);
 const fetch = require("node-fetch");
 
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -27,7 +27,7 @@ app.get('/books', (req, res) => {
             console.log(err);
         })
         .on('data', function(data) {
-          console.log("sending data " + JSON.stringify(data));  
+          console.log("sending data " + JSON.stringify(data));
           res.send(data);
         })
 });
@@ -45,7 +45,7 @@ app.post('/login', (loginReq, loginRes) => {
     //     console.log(err);
     // })
     // .on('data', function(data) {
-    //   console.log("sending data " + JSON.stringify(data));  
+    //   console.log("sending data " + JSON.stringify(data));
     //     loginRes.send(data);
     // });
 
