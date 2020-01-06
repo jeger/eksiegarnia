@@ -7,7 +7,8 @@ const app = express();
 
 const shippings = [
   {id: 1, name: "DHL" },
-  {id: 2, name: "UPS" }
+  {id: 2, name: "UPS" },
+  {id: 3, name: "dummyShipping"}
 ];
 
 app.get('/shippings', (req, res) => {
