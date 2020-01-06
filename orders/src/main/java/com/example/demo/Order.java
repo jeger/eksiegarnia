@@ -10,12 +10,25 @@ import javax.persistence.GenerationType;
 @Entity
 @Table(name = "orders")
 public class Order {
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "book_id")
     private long bookId;
+    @Column(name = "shipping_id")
+    private long shippingId;
 
-    public Order(){ }
+    public Order() {
+    }
+
+
+    public long getShippingId() {
+        return shippingId;
+    }
+
+    public void setShippingId(long shippingId) {
+        this.shippingId = shippingId;
+    }
 
 
     public long getId() {
@@ -39,6 +52,7 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", bookId=" + bookId +
+                ", shippingId=" + shippingId +
                 '}';
     }
 }

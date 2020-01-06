@@ -27,10 +27,6 @@ public class OrderController {
     public void saveOrder(@RequestHeader(value="Authorization") String token, @RequestBody Order order) {
         System.out.println(order);
         System.out.println(token);
-//        String token = auth.split(" ")[1];
-
-//        String token = auth;
-//        System.out.println("token: " + token);
 
         String key = "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAfh7+S/hax8d0+ngjE7/5MvAYQNNI3olCP/ULmD9j/PY6j6PR9C6uLr3idgdcEWMiJqvoKLKhQrvzGqo/yBGQUwIDAQAB";
 
@@ -40,7 +36,6 @@ public class OrderController {
             RSAPublicKey rsaPublicKey = RSAPublicKeyImpl.newKey(decode);
         System.out.println(order);
             if (verifyToken(token, rsaPublicKey)){
-//        orders.save(order);
             } else {
         System.out.println("Could not authorize with this keyu=");
             }
@@ -55,7 +50,6 @@ public class OrderController {
         try {
             Algorithm algorithm = Algorithm.RSA256(publicKey, null);
             JWTVerifier verifier = JWT.require(algorithm)
-                    //more validations if needed
                     .build();
             verifier.verify(token);
             return true;

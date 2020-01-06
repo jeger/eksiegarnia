@@ -1,9 +1,24 @@
 # Księgarnia
 
 System e-księgarni zbudowany w oparciu o architekturę mikrousług.
-Wersja demo.
 
-## Instalacja
+## Schemat wysokiego poziomu
+![schemat mikrousług](detail.png)
+
+## Użyte technologia
+Prawie wszystkie serwisy (błącznie z bramą API) są napisane w node.js
+Serwis orders napisany jest w Javie z użyciem Spring Boot.
+Każdy serwis żyje w kontenerze Dockera. Kontenery te są orkiestrowane przez kubernetesa.
+
+## Użycie
+
+
+### Logowanie
+```
+curl -H "Content-Type: application/json" -X POST -d '{"username":"admin", "password": "password"}' http://192.168.99.100:30000/login
+```
+
+<!-- ## Instalacja
 Założenie: zainstalowany menedżer pakietów npm
 ```
 chmod +x install.sh
@@ -26,7 +41,7 @@ Uruchomienie usługi przewoźników na porcie 10002:
 node shipping/shipping.js
 ```
 
-## Użycie
+## Użycie -->
 
 ### Logowanie
 ```
