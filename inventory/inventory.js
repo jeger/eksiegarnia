@@ -16,45 +16,45 @@ const books = [
 ];
 
 app.get('/books', (req, res) => {
-  
-  const token = retrieveTokenFromRequest(req);
 
-  var publicKEY  = fs.readFileSync('./public.key', 'utf8');
-
-  var verifyOptions = {
-    issuer:  "iam",
-    subject:  "orders",
-    audience:  "customers",
-    expiresIn:  "12h",
-    algorithm:  ["RS256"]
-   };
-   
-  var legit = jwt.verify(token, publicKEY, verifyOptions, function(err, decoded) {
-    if (err) {
-      console.log("ERROR:");
-      console.log(err);
-      res.sendStatus(403);
-    } else {
-      console.log("DECODED: " + decoded);
+  // const token = retrieveTokenFromRequest(req);
+  //
+  // var publicKEY  = fs.readFileSync('./public.key', 'utf8');
+  //
+  // var verifyOptions = {
+  //   issuer:  "iam",
+  //   subject:  "orders",
+  //   audience:  "customers",
+  //   expiresIn:  "12h",
+  //   algorithm:  ["RS256"]
+  //  };
+  //
+  // var legit = jwt.verify(token, publicKEY, verifyOptions, function(err, decoded) {
+  //   if (err) {
+  //     console.log("ERROR:");
+  //     console.log(err);
+  //     res.sendStatus(403);
+  //   } else {
+  //     console.log("DECODED: " + decoded);
       res.send(books);
-    }
-  });
-  console.log("\nJWT verification result: " + JSON.stringify(legit));
+  //   }
+  // });
+  // console.log("\nJWT verification result: " + JSON.stringify(legit));
 });
 
 app.listen(PORT, HOST);
 console.log(`Inventory service running on http://${HOST}:${PORT}`);
 
-function retrieveTokenFromRequest(req) {
-  const authorization = req.header('Authorization');
-  console.log("req.header(auth): " + authorization);
-  if (authorization === null || typeof authorization === 'undefined') {
-    return null;
-  }
-  const token = authorization.substr('JWT '.length);
-  console.log("token: " + token);
-  if (token === null | typeof token === 'undefined') {
-    return null;
-  }
-  return token;
-}
+// function retrieveTokenFromRequest(req) {
+//   const authorization = req.header('Authorization');
+//   console.log("req.header(auth): " + authorization);
+//   if (authorization === null || typeof authorization === 'undefined') {
+//     return null;
+//   }
+//   const token = authorization.substr('JWT '.length);
+//   console.log("token: " + token);
+//   if (token === null | typeof token === 'undefined') {
+//     return null;
+//   }
+//   return token;
+// }

@@ -9,7 +9,7 @@ const app = express();
 const inventoryService = 'http://inventory:10001';
 const authService = 'http://auth:10010';
 const shippingService = 'http://shipping:10002'
-const ordersService = 'http://localhost:8080'
+const ordersService = 'http://orders:8080'
 
 console.log("authService: " + authService);
 const fetch = require("node-fetch");

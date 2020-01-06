@@ -71,3 +71,111 @@ spec:
             image: szymonsadkowski/eksiegarnia_apigateway:latest
             ports:
               - containerPort: 80
+---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: orders
+    labels:
+      name: orders
+  spec:
+    selector:
+      app: orders
+    ports:
+      - port: 10005
+        protocol: "TCP"
+    type: ClusterIP
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: orders
+    labels:
+      app: orders
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: orders
+    template:
+      metadata:
+        labels:
+          app: orders
+      spec:
+        containers:
+          - name:  orders-kontener
+            image: szymonsadkowski/eksiegarnia_orders:latest
+            ports:
+              - containerPort: 80
+---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: auth
+    labels:
+      name: auth
+  spec:
+    selector:
+      app: auth
+    ports:
+      - port: 10010
+        protocol: "TCP"
+    type: ClusterIP
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: auth
+    labels:
+      app: auth
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: auth
+    template:
+      metadata:
+        labels:
+          app: auth
+      spec:
+        containers:
+          - name: auth-kontener
+            image: szymonsadkowski/eksiegarnia_auth:latest
+            ports:
+              - containerPort: 80
+---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: shipping
+    labels:
+      name: shipping
+  spec:
+    selector:
+      app: shipping
+    ports:
+      - port: 10002
+        protocol: "TCP"
+    type: ClusterIP
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: shipping
+    labels:
+      app: shipping
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: shipping
+    template:
+      metadata:
+        labels:
+          app: shipping
+      spec:
+        containers:
+          - name: shipping-kontener
+            image: szymonsadkowski/eksiegarnia_shipping:latest
+            ports:
+              - containerPort: 80
