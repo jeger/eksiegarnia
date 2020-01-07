@@ -10,6 +10,22 @@ Prawie wszystkie serwisy (błącznie z bramą API) są napisane w node.js
 Serwis orders napisany jest w Javie z użyciem Spring Boot.
 Każdy serwis żyje w kontenerze Dockera. Kontenery te są orkiestrowane przez kubernetesa.
 
+## Uruchamianie klastra Kubernetesa
+Potrzebne są: minikube, kubectl (skonfigurowany z virtualbox)
+
+```
+minikube start
+```
+
+a następnie w katalogu gdzie zapisaliśmy plik deployment.yml
+
+```
+kubectl create -f deployment.yml
+```
+
+Klaster zostanie uruchomiony i będzie dostępny pod adresem 192.168.99.100:30000
+(domyślne IP + port bramy API zdefiniowany w deployment.yml)
+
 ## Użycie
 
 
