@@ -82,7 +82,7 @@ spec:
     selector:
       app: orders
     ports:
-      - port: 10005
+      - port: 8080
         protocol: "TCP"
     type: ClusterIP
 ---
