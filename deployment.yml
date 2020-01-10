@@ -191,9 +191,8 @@ spec:
       app: front
     ports:
       - port: 10009
-        nodePort: 30009
         protocol: "TCP"
-    type: LoadBalancer
+    type: ClusterIP
 ---
   apiVersion: apps/v1
   kind: Deployment
@@ -213,8 +212,8 @@ spec:
       spec:
         containers:
           - name: front-kontener
+            imagePullPolicy: Never
             image: szymonsadkowski/eksiegarnia_front:latest
-            imagePullPolicy: Never 
             ports:
               - containerPort: 80
 
