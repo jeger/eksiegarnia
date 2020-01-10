@@ -179,3 +179,42 @@ spec:
             image: szymonsadkowski/eksiegarnia_shipping:latest
             ports:
               - containerPort: 80
+---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: front
+    labels:
+      name: front
+  spec:
+    selector:
+      app: front
+    ports:
+      - port: 10009
+        nodePort: 30009
+        protocol: "TCP"
+    type: LoadBalancer
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: front
+    labels:
+      app: front
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: front
+    template:
+      metadata:
+        labels:
+          app: front
+      spec:
+        containers:
+          - name: front-kontener
+            image: szymonsadkowski/eksiegarnia_front:latest
+            imagePullPolicy: Never 
+            ports:
+              - containerPort: 80
+
