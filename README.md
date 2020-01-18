@@ -5,10 +5,14 @@ System e-księgarni zbudowany w oparciu o architekturę mikrousług.
 ## Schemat wysokiego poziomu
 ![schemat mikrousług](https://i.ibb.co/TK8nzbf/Untitled-Diagram.png)
 
+## Diagram sekwencji
+![diagram sekwencji][https://i.ibb.co/3zZGrxp/diagram-sekwencji.png]
+
 ## Użyte technologie
 Prawie wszystkie serwisy (błącznie z bramą API) są napisane w node.js
 Serwis orders napisany jest w Javie z użyciem Spring Boot.
-Każdy serwis żyje w kontenerze Dockera. Kontenery te są orkiestrowane przez kubernetesa.
+Każdy serwis żyje w kontenerze Dockera. Kontenery te są orkiestrowane przy użyciu Kubernetesa.
+
 
 ## Uruchamianie klastra Kubernetesa
 Potrzebne są: minikube, kubectl (skonfigurowany z virtualbox)
@@ -53,9 +57,5 @@ curl -H "Content-Type: application/json" -H "Authorization: eyJhbGciOiJSUzI1NiIs
 ## Sprzątanie
 
 ```
-kubectl delete services --all
-```
-
-```
-kubectl delete deployments --all
+kubectl delete -f deployment.yml
 ```
