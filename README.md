@@ -6,7 +6,7 @@ System e-księgarni zbudowany w oparciu o architekturę mikrousług.
 ![schemat mikrousług](https://i.ibb.co/TK8nzbf/Untitled-Diagram.png)
 
 ## Diagram sekwencji
-![diagram sekwencji][https://i.ibb.co/3zZGrxp/diagram-sekwencji.png]
+![diagram sekwencji](https://i.ibb.co/3zZGrxp/diagram-sekwencji.png)
 
 ## Użyte technologie
 Prawie wszystkie serwisy (błącznie z bramą API) są napisane w node.js
